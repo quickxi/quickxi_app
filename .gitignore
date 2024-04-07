@@ -1,0 +1,120 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.buildlog/
+.history
+.svn/
+migrate_working_dir/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+#.vscode/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/build/
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release
+
+# Flutter/Dart specific
+**/ios/Flutter/.last_build_id
+**/ios/Flutter/App.framework
+**/ios/Flutter/Flutter.framework
+**/ios/Flutter/flutter_export_environment.sh
+**/ios/Flutter/flutter_project.podspec
+**/ios/Flutter/flutter_assets/
+**/ios/Flutter/flutter_export_environment.plist
+
+**/android/.gradle/
+**/android/app/build/
+**/android/app/outputs/
+**/android/build/
+**/android/key.properties
+**/android/gradle-wrapper.jar
+**/android/.idea/
+**/android/local.properties
+
+**/.dart_tool/
+**/.idea/
+**/.vscode/
+**/build/
+
+# Android/IntelliJ specific
+**/android/.gradle
+**/android/build
+**/android/local.properties
+**/android/.idea/workspace.xml
+**/android/.idea/libraries
+**/android/.idea/caches
+**/android/.idea/modules.xml
+**/android/.idea/navEditor.xml
+**/android/.idea/assetWizardSettings.xml
+**/android/.idea/runConfigurations.xml
+**/android/.idea/gradle.xml
+**/android/.idea/misc.xml
+**/android/.idea/codeStyles
+**/android/.idea/dictionaries
+**/android/.idea/vcs.xml
+**/android/.idea/uiDesigner.xml
+**/android/.idea/inspectionProfiles
+**/android/.idea/compiler.xml
+
+# iOS/Xcode specific
+**/ios/Pods/
+**/ios/.symlinks/
+**/ios/Flutter/App.framework
+**/ios/Flutter/Flutter.framework
+**/ios/Flutter/flutter_assets/
+**/ios/Flutter/flutter_export_environment.sh
+**/ios/Flutter/flutter_project.podspec
+**/ios/Flutter/flutter_export_environment.plist
+**/ios/Runner.xcworkspace/
+**/ios/.generated/
+
+# macOS specific
+**/macos/Flutter/Flutter.framework/
+
+# Windows specific
+**/windows/Flutter/flutter_export.bat
+**/windows/Flutter/flutter_export.vcxproj
+**/windows/Flutter/flutter_project.vcxproj
+**/windows/Flutter/flutter_windows.dll
+**/windows/Flutter/flutter_windows.vcxproj
+**/windows/Flutter/flutter_windows_export.bat
+**/windows/Flutter/flutter_windows_uwp.vcxproj
+**/windows/Flutter/flutter_windows_uwp_export.bat
+
+# Web specific
+**/web/flutter_service_worker.js
+**/web/flutter_service_worker.js.map
+**/web/assets/
+**/web/index.html
+**/web/main.dart.js
+**/web/main.dart.js.map
+
