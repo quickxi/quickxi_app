@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quickxi_app/screen/JoinScreen.dart';
 import 'package:quickxi_app/screen/LoginScreen.dart';
 import 'map.dart';
 
@@ -55,7 +56,10 @@ class HomeScreen extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () {
-              print('회원가입 버튼 클릭');
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => JoinScreen()),
+              );
             },
             child: Text('회원가입'),
           ),
