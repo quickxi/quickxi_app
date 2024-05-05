@@ -1,33 +1,131 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_polyline_points/flutter_polyline_points.dart';
+import 'package:quickxi_app/constants.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:location/location.dart';
 
 class MapMain extends StatefulWidget {
-  const MapMain({Key? key}) : super(key: key);
+  const MapMain({super.key});
 
   @override
-  _MapMainState createState() => _MapMainState();
+  State<MapMain> createState() => _MapMainState();
 }
 
 class _MapMainState extends State<MapMain> {
-  late GoogleMapController mapController;
-  //임의로 창조관 설정, 후에 사용자 위치로 변경
-  final LatLng _center = const LatLng(37.282470, 127.900079);
-  void _onMapCreated(GoogleMapController controller) {
-    mapController = controller;
+  final locationController = Location();
+
+  static const sourLocation = LatLng(37.282470, 127.900079);
+  static const destLocation = LatLng(37.280129, 127.9120728);
+
+  LatLng? currentPosition;
+  Map<PolylineId, Polyline> polylines = {};
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance
+        .addPostFrameCallback((_) async => await initializeMap());
+  }
+
+  Future<void> initializeMap() async {
+    await fetchLocationUpdates();
+    final coordinates = await fetchPolylinePoints();
+    generatePolyLineFromPoints(coordinates);
   }
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-        home: Scaffold(
-            appBar: AppBar(
-              title: const Text('Maps Sample App'),
-              backgroundColor: const Color.fromARGB(255, 0, 68, 2),
-            ),
-            body: GoogleMap(
-              onMapCreated: _onMapCreated,
-              initialCameraPosition:
-                  CameraPosition(target: _center, zoom: 17.0),
-            )));
+  Widget build(BuildContext context) => Scaffold(
+    body: currentPosition == null
+        ? const Center(child: CircularProgressIndicator())
+        : GoogleMap(
+      initialCameraPosition: const CameraPosition(
+        target: sourLocation,
+        zoom: 13,
+      ),
+      markers: {
+        Marker(
+          markerId: const MarkerId('currentLocation'),
+          icon: BitmapDescriptor.defaultMarker,
+          position: currentPosition!,
+        ),
+        const Marker(
+          markerId: MarkerId('sourceLocation'),
+          icon: BitmapDescriptor.defaultMarker,
+          position: sourLocation,
+        ),
+        const Marker(
+          markerId: MarkerId('destinationLocation'),
+          icon: BitmapDescriptor.defaultMarker,
+          position: destLocation,
+        )
+      },
+      polylines: Set<Polyline>.of(polylines.values),
+    ),
+  );
+
+  Future<void> fetchLocationUpdates() async {
+    bool serviceEnabled;
+    PermissionStatus permissionGranted;
+
+    serviceEnabled = await locationController.serviceEnabled();
+    if (serviceEnabled) {
+      serviceEnabled = await locationController.requestService();
+    } else {
+      return;
+    }
+
+    permissionGranted = await locationController.hasPermission();
+    if (permissionGranted == PermissionStatus.denied) {
+      permissionGranted = await locationController.requestPermission();
+      if (permissionGranted != PermissionStatus.granted) {
+        return;
+      }
+    }
+
+    locationController.onLocationChanged.listen((currentLocation) {
+      if (currentLocation.latitude != null &&
+          currentLocation.longitude != null) {
+        setState(() {
+          currentPosition = LatLng(
+            currentLocation.latitude!,
+            currentLocation.longitude!,
+          );
+        });
+      }
+    });
+  }
+
+  Future<List<LatLng>> fetchPolylinePoints() async {
+    final polylinePoints = PolylinePoints();
+
+    final result = await polylinePoints.getRouteBetweenCoordinates(
+      googleMapsApiKey,
+      PointLatLng(sourLocation.latitude, sourLocation.longitude),
+      PointLatLng(destLocation.latitude, destLocation.longitude),
+    );
+
+    if (result.points.isNotEmpty) {
+      return result.points
+          .map((point) => LatLng(point.latitude, point.longitude))
+          .toList();
+    } else {
+      debugPrint(result.errorMessage);
+      return [];
+    }
+  }
+
+  Future<void> generatePolyLineFromPoints(
+      List<LatLng> polylineCoordinates) async {
+    const id = PolylineId('polyline');
+
+    final polyline = Polyline(
+      polylineId: id,
+      color: Colors.blueAccent,
+      points: polylineCoordinates,
+      width: 5,
+    );
+
+    setState(() => polylines[id] = polyline);
   }
 }
