@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quickxi_app/screen/LoginScreen.dart';
 import 'map.dart';
 
 void main() {
@@ -42,7 +43,10 @@ class HomeScreen extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () {
-              print('로그인 버튼 클릭');
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => LoginScreen()),
+              );
             },
             child: Text('로그인'),
           ),
@@ -54,6 +58,9 @@ class HomeScreen extends StatelessWidget {
               print('회원가입 버튼 클릭');
             },
             child: Text('회원가입'),
+          ),
+          SizedBox(
+            height: 12.0,
           ),
           ElevatedButton(
               onPressed: () {
