@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'map.dart';
+import 'screen/Delivery.dart';
 
 void main() {
   runApp(
@@ -56,13 +57,23 @@ class HomeScreen extends StatelessWidget {
             child: Text('회원가입'),
           ),
           ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => MapMain()),
-                );
-              },
-              child: Text("임시 기능 이동"))
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MapMain()),
+              );
+            },
+            child: Text("임시 기능 이동"),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Delivery()),
+              );
+            },
+            child: Text("배송"),
+          ),
         ],
       ),
     );
