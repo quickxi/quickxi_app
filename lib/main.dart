@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'map.dart';
 
 void main() {
   runApp(
@@ -14,7 +15,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.green,
+      backgroundColor: const Color.fromARGB(255, 0, 68, 2),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -53,7 +54,15 @@ class HomeScreen extends StatelessWidget {
               print('회원가입 버튼 클릭');
             },
             child: Text('회원가입'),
-          )
+          ),
+          ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MapMain()),
+                );
+              },
+              child: Text("임시 기능 이동"))
         ],
       ),
     );
