@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:quickxi_app/screen/JoinScreen.dart';
 import 'package:quickxi_app/screen/LoginScreen.dart';
-import 'map.dart';
+import 'map/map.dart';
+import 'map/mapWithFunc.dart';
 
 void main() {
   runApp(
@@ -73,7 +74,15 @@ class HomeScreen extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => MapMain()),
                 );
               },
-              child: Text("임시 기능 이동"))
+              child: Text("임시 기능 이동")),
+          ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MapScreen()),
+                );
+              },
+              child: Text("지도 기능 이동2"))
         ],
       ),
     );

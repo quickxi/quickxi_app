@@ -101,13 +101,13 @@ class _MapMainState extends State<MapMain> {
                         text: '출발지와 도착지를\n',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 20,), // 굵은 텍스트로 설정합니다.
+                          fontSize: 20,),
                       ),
                       TextSpan(
                         text: '입력해주세요.',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 20,), // 이탤릭체 텍스트로 설정합니다.
+                          fontSize: 20,),
                       ),
                     ],
                    ),
