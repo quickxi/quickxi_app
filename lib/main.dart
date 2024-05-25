@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:quickxi_app/driver/driverMapFunc.dart';
 import 'package:quickxi_app/screen/JoinScreen.dart';
 import 'package:quickxi_app/screen/LoginScreen.dart';
+import 'driver/watingScreen.dart';
 import 'map/map.dart';
 import 'map/mapWithFunc.dart';
+import 'driver/driverMapFunc.dart';
 
 void main() {
   runApp(
@@ -50,7 +53,20 @@ class HomeScreen extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => LoginScreen()),
               );
             },
-            child: Text('로그인'),
+            style: ElevatedButton.styleFrom(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+
+              backgroundColor : Colors.white,
+              foregroundColor:  Colors.black,
+              minimumSize: Size(200, 40),
+            ),
+            child: Text('로그인',
+              style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              ),),
           ),
           SizedBox(
             height: 12.0,
@@ -62,7 +78,19 @@ class HomeScreen extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => JoinScreen()),
               );
             },
-            child: Text('회원가입'),
+            style: ElevatedButton.styleFrom(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+
+              backgroundColor : Colors.white,
+              foregroundColor:  Colors.black,
+              minimumSize: Size(200, 40),
+            ),
+            child: Text('회원가입',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),),
           ),
           SizedBox(
             height: 12.0,
@@ -82,7 +110,15 @@ class HomeScreen extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => MapScreen()),
                 );
               },
-              child: Text("지도 기능 이동2"))
+              child: Text("지도 기능 이동2")),
+          ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => WaitingScreen()),
+                );
+              },
+              child: Text("기사용 기능"))
         ],
       ),
     );

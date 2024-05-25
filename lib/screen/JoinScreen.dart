@@ -8,7 +8,12 @@ class JoinScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 0, 68, 2),
       appBar: AppBar(
-        title: Text('회원가입'),
+        title: Text('회원가입',
+        style: TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+        ),),
+        backgroundColor: Color.fromARGB(255, 0, 68, 2),
       ),
       body: Padding(
         padding: EdgeInsets.all(16.0),

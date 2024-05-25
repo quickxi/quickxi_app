@@ -74,7 +74,9 @@ class _MapScreenState extends State<MapScreen> {
                         alignment: Alignment.center,
                         child:Column(
                           children: [
-                            ElevatedButton(onPressed: (){},
+                            ElevatedButton(onPressed: (){setState(() {
+                              _selectedIndex = 1;
+                            });},
                               style: ElevatedButton.styleFrom(
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10),
@@ -318,16 +320,16 @@ class _MapScreenState extends State<MapScreen> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: '비용안내',
+            icon: Icon(Icons.clear, color: Colors.transparent),
+            label: '',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: '결제수단',
+            icon: Icon(Icons.clear, color: Colors.transparent),
+            label: '',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: '배달완료',
+            icon: Icon(Icons.clear, color: Colors.transparent),
+            label: '',
           ),
         ],
         currentIndex: _selectedIndex,

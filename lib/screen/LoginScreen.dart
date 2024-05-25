@@ -9,7 +9,12 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 0, 68, 2),
       appBar: AppBar(
-        title: Text('로그인'),
+        backgroundColor: Color.fromARGB(255, 0, 68, 2),
+        title: Text('로그인',
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
