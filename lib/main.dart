@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:quickxi_app/customer/cargo.dart';
 import 'package:quickxi_app/driver/driverMapFunc.dart';
 import 'package:quickxi_app/screen/JoinScreen.dart';
 import 'package:quickxi_app/screen/LoginScreen.dart';
 import 'driver/watingScreen.dart';
-import 'map/map.dart';
-import 'map/mapWithFunc.dart';
+import 'customer/map.dart';
+import 'customer/mapWithFunc.dart';
 import 'driver/driverMapFunc.dart';
 
 void main() {
@@ -99,7 +100,7 @@ class HomeScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => MapMain()),
+                  MaterialPageRoute(builder: (context) => CargoScreen()),
                 );
               },
               child: Text("임시 기능 이동")),
